@@ -87,7 +87,7 @@ describe('App component', () => {
     fireEvent.change(heightInchesInput, { target: { value: '8' } });
     fireEvent.change(weightInput, { target: { value: '150' } });
     jest.spyOn(window, 'alert').mockImplementation(() => {});
-    fireEvent.click(continueButton);
+    fireEvent.click(continueButton)
     expect(window.alert).toHaveBeenCalledWith(expect.stringContaining('you are Normal weight'));
   });
 
