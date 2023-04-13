@@ -1,3 +1,4 @@
+/* eslint-disable quotes */
 module.exports = {
   transform: {
     "^.+\\.jsx?$": "babel-jest"
@@ -5,4 +6,4 @@ module.exports = {
   moduleNameMapper: {
     "\\.(css|less)$": "<rootDir>/__mocks__/styleMock.js"
   }
-};
+}

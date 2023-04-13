@@ -1,3 +1,7 @@
+/* eslint-disable no-multiple-empty-lines */
+/* eslint-disable eol-last */
+/* eslint-disable semi */
+/* eslint-disable no-undef */
 import { render, fireEvent } from '@testing-library/react';
 import App from '../App';
 import React from 'react';
@@ -35,7 +39,7 @@ describe('App component', () => {
   it('only allows valid input for weight', () => {
     const { getByPlaceholderText } = render(<App />);
     const weightInput = getByPlaceholderText('Weight');
-    fireEvent.change(weightInput, { target: { value: "123.45" } });
+    fireEvent.change(weightInput, { target: { value: '123.45' } });
     expect(weightInput.value).toBe('123.45');
     fireEvent.change(weightInput, { target: { value: '' } });
     fireEvent.change(weightInput, { target: { value: 'abc' } });
@@ -132,7 +136,5 @@ describe('App component', () => {
     jest.spyOn(window, 'alert').mockImplementation(() => {});
     fireEvent.click(continueButton);
     expect(window.alert).toHaveBeenCalledWith(expect.stringContaining('you are Underweight'));
-  });
-
-
+  })
 })

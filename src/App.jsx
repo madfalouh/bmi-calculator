@@ -1,12 +1,15 @@
+/* eslint-disable no-multiple-empty-lines */
+/* eslint-disable import/no-duplicates */
+/* eslint-disable semi */
+/* eslint-disable quotes */
 import { useRef, useState } from "react";
-import React from 'react';
-import './App.css'
+import React from "react";
+import "./App.css";
 
-
-function App() {
+function App () {
   const eye = useRef(null);
 
-  const [anglee, setAngle] = useState(0);
+
   const [x, setX] = useState();
 
   const [y, setY] = useState();
@@ -53,11 +56,10 @@ function App() {
 
   const calculateBmi = (heightFeet, heightInches, weight) => {
     if (heightFeet < 0 || heightInches < 0 || weight < 0) {
-      
+      alert("Height and weight must be valid");
     }
     if ((heightFeet === 0 && heightInches === 0) || weight === 0) {
-      alert("Height and weight must be valid")
-      
+      alert("Height and weight must be valid");
     }
 
     const totalHeightInches = heightFeet * 12 + heightInches;
@@ -79,20 +81,12 @@ function App() {
       category = "Obese";
     }
 
-
-
-if(!isNaN(bmi)){
-alert(" \n Your BMI is :" + bmi + "  you are " + category);
- return { bmi, category };
-}else{
-alert("Enter a valid value");
-}
-
-    
-
-
-
-   
+    if (!isNaN(bmi)) {
+      alert(" \n Your BMI is :" + bmi + "  you are " + category);
+      return { bmi, category };
+    } else {
+      alert("Enter a valid value");
+    }
   };
 
   const hundleSubmit = () => {
@@ -115,15 +109,14 @@ alert("Enter a valid value");
           <div className="outer">
             <div className="loader">
               <span>
-                {" "}
                 <div
                   className="eye"
                   style={{
                     transform:
-                      "translate(" + x * 0.05 + "%, " + y * 0.05 + "%)",
+                      "translate(" + x * 0.05 + "%, " + y * 0.05 + "%)"
                   }}
                   ref={eye}
-                ></div>{" "}
+                ></div>
               </span>
             </div>
           </div>
@@ -131,7 +124,12 @@ alert("Enter a valid value");
         <div className="input-section">
           <p>Height in foot</p>
 
-          <input value={inputHeight} onChange={handleInputChange} required  placeholder="Height in foot" />
+          <input
+            value={inputHeight}
+            onChange={handleInputChange}
+            required
+            placeholder="Height in foot"
+          />
 
           <p>Height in iches</p>
 
@@ -145,7 +143,7 @@ alert("Enter a valid value");
           <p>Weight</p>
 
           <input
-            placeholder='Weight'
+            placeholder="Weight"
             value={inputWeight}
             onChange={handleInputChangeWeight}
             required
@@ -156,7 +154,7 @@ alert("Enter a valid value");
         </button>
       </div>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
