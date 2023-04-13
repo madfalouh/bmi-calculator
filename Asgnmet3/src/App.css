@@ -74,6 +74,7 @@ position: relative;
 
 .form-container {
 width: 25%;
+min-width: 300px;
 display: flex;
 flex-direction: column;
 justify-content: center;

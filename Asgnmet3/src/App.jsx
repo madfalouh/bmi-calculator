@@ -1,6 +1,4 @@
 import { useRef, useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
 
 function App() {
@@ -21,16 +19,26 @@ function App() {
     setY(posY);
   };
 
-  const [inputValue, setInputValue] = useState('');
+  const [inputHeight, setInputHeight] = useState('');
+
+  const [inputWeight, setInputWeight] = useState('');
 
   const handleInputChange = (event) => {
     const regex = /^\d*\.?\d{0,2}$/;
 
     if (regex.test(event.target.value) || event.target.value === '') {
-      setInputValue(event.target.value);
+      setInputHeight(event.target.value);
     }
   };
 
+
+  const handleInputChangeWeight = (event) => {
+    const regex = /^\d*\.?\d{0,2}$/;
+
+    if (regex.test(event.target.value) || event.target.value === '') {
+      setInputWeight(event.target.value);
+    }
+  };
 
   return (
     <div
@@ -60,15 +68,15 @@ function App() {
         <div  className="input-section" >
         <p>Height</p>
 
-             <input value={inputValue} onChange={handleInputChange} />
+             <input value={inputHeight} onChange={handleInputChange}  required />
 
 
         <p>Weight</p>
 
-             <input value={inputValue} onChange={handleInputChange} />
+             <input value={inputWeight} onChange={handleInputChangeWeight}  required />
 
 </div>
-        <button>Continue</button>
+        <button>Continue!</button>
       </div>
     </div>
   );
