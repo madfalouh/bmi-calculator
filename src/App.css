@@ -1,7 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
 
-
-@import url('https://fonts.googleapis.com/css?family=Montserrat:900&display=swap');
 
 body{
   margin:0;
@@ -14,7 +11,7 @@ body{
   background: #121212;
   display: flex;
   position: relative;
-  
+  transform: translateY(50px);
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;

@@ -1,5 +1,7 @@
 import { useRef, useState } from "react";
-import "./App.css";
+import React from 'react';
+import './App.css'
+
 
 function App() {
   const eye = useRef(null);
@@ -19,25 +21,86 @@ function App() {
     setY(posY);
   };
 
-  const [inputHeight, setInputHeight] = useState('');
+  const [inputHeight, setInputHeight] = useState("");
 
-  const [inputWeight, setInputWeight] = useState('');
+  const [inputWeight, setInputWeight] = useState("");
+
+  const [inputInches, setInputInches] = useState("");
 
   const handleInputChange = (event) => {
-    const regex = /^\d*\.?\d{0,2}$/;
+    const regex = /^-?\d*\.?\d+$/;
 
-    if (regex.test(event.target.value) || event.target.value === '') {
+    if (regex.test(event.target.value) || event.target.value === "") {
       setInputHeight(event.target.value);
     }
   };
 
+  const handleInputChangeInches = (event) => {
+    const regex = /^-?\d*\.?\d+$/;
+
+    if (regex.test(event.target.value) || event.target.value === "") {
+      setInputInches(event.target.value);
+    }
+  };
 
   const handleInputChangeWeight = (event) => {
     const regex = /^\d*\.?\d{0,2}$/;
 
-    if (regex.test(event.target.value) || event.target.value === '') {
+    if (regex.test(event.target.value) || event.target.value === "") {
       setInputWeight(event.target.value);
     }
+  };
+
+  const calculateBmi = (heightFeet, heightInches, weight) => {
+    if (heightFeet < 0 || heightInches < 0 || weight < 0) {
+      
+    }
+    if ((heightFeet === 0 && heightInches === 0) || weight === 0) {
+      alert("Height and weight must be valid")
+      
+    }
+
+    const totalHeightInches = heightFeet * 12 + heightInches;
+    const weightKg = weight * 0.45;
+    const heightCm = totalHeightInches * 0.025;
+
+    let bmi = weightKg / heightCm ** 2;
+    bmi = parseFloat(bmi.toFixed(1));
+
+    let category;
+
+    if (bmi < 18.5) {
+      category = "Underweight";
+    } else if (bmi < 25) {
+      category = "Normal weight";
+    } else if (bmi < 30) {
+      category = "Overweight";
+    } else {
+      category = "Obese";
+    }
+
+
+
+if(!isNaN(bmi)){
+alert(" \n Your BMI is :" + bmi + "  you are " + category);
+ return { bmi, category };
+}else{
+alert("Enter a valid value");
+}
+
+    
+
+
+
+   
+  };
+
+  const hundleSubmit = () => {
+    calculateBmi(
+      Number(inputHeight),
+      Number(inputInches),
+      parseFloat(inputWeight)
+    );
   };
 
   return (
@@ -49,8 +112,8 @@ function App() {
     >
       <div className="form-container">
         <div ref={container}>
-          <div class="outer">
-            <div class="loader">
+          <div className="outer">
+            <div className="loader">
               <span>
                 {" "}
                 <div
@@ -65,18 +128,32 @@ function App() {
             </div>
           </div>
         </div>
-        <div  className="input-section" >
-        <p>Height</p>
+        <div className="input-section">
+          <p>Height in foot</p>
 
-             <input value={inputHeight} onChange={handleInputChange}  required />
+          <input value={inputHeight} onChange={handleInputChange} required  placeholder="Height in foot" />
 
+          <p>Height in iches</p>
 
-        <p>Weight</p>
+          <input
+            placeholder="Height in inches"
+            value={inputInches}
+            onChange={handleInputChangeInches}
+            required
+          />
 
-             <input value={inputWeight} onChange={handleInputChangeWeight}  required />
+          <p>Weight</p>
 
-</div>
-        <button>Continue!</button>
+          <input
+            placeholder='Weight'
+            value={inputWeight}
+            onChange={handleInputChangeWeight}
+            required
+          />
+        </div>
+        <button data-testid="continue-button" onClick={hundleSubmit}>
+          Continue!
+        </button>
       </div>
     </div>
   );
