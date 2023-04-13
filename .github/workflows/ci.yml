@@ -12,7 +12,7 @@ jobs:
         run: npm install
       - name: Run unit tests
         run: npm run test
-      - name: Run lint
-        run: npx eslint . --ext .js,.jsx,.ts,.tsx
       - name: Build the project
         run: npm run build
+      - name : Run lint 
+        run : npx eslint . --ext .js,.jsx,.ts,.tsx
